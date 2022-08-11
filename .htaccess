@@ -1,0 +1,10 @@
+RewriteEngine On
+#condicion permite hacer solicitudes a carpetas, archivos -- ver bien parte 03
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+#redirige a index.php
+RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+
+
