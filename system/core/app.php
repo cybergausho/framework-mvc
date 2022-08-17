@@ -1,6 +1,6 @@
 <?php
 //manejo de configuraciones del sistema
-const  SERVER_URL="http://localhost/mvc-login";
+const  SERVER_URL="http://localhost/framework-mvc";
 const  COMPANY=  "Framework MVC";
 
 date_default_timezone_set("America/Argentina/Buenos_Aires");
@@ -15,6 +15,7 @@ class App{
             $archivoController='app/controller/main.php';
             require_once $archivoController;
             $controller= new Main();
+            $controller->cargarModelo('main');
             return false;
         } 
         $archivoController='app/controller/'.$url[0].'.php';
@@ -22,6 +23,7 @@ class App{
         if (file_exists($archivoController)){
             require_once $archivoController;
             $controller= new  $url[0];
+            $controller->cargarModelo($url[0]);
             if (isset($url[1])){
                 //trae la segunda url 
                 try {

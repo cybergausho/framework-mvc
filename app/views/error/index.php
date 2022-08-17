@@ -9,7 +9,7 @@
 <body>
 <?php require 'app/views/header.php';?>
     <div id="main">
-    <h1><?php echo  $this->mensaje;?></h1>
+    <h1 class="center error"><?php echo  $this->mensaje;?></h1>
     </div>
     <?php require 'app/views/footer.php';?>
 
