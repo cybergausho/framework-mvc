@@ -11,9 +11,9 @@ class LoginModel extends Model{
         $query= $this->db->connect()->prepare('INSERT INTO '.$tabla.' (NOMBRE, APELLIDO, NRO_DOCUMENTO, ESTADO) VALUES (:nombre, :apellido, :nro_documento, :estado)');
         try {
             $query->execute(['nombre'=> $datos['nombre'], 'apellido' => $datos['apellido'],'nro_documento' =>$datos['nro_documento'],'estado'=> $datos['estado']]);
-            echo "datos insertados.";
+            return true;
         } catch (\Throwable $th) {
-            echo "fallo insertar.";
+            return false;
         }
         //$this->model->insertar(); A FUTURO
     }

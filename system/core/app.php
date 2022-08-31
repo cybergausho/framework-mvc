@@ -12,10 +12,12 @@ class App{
         $url = explode('/',$url);
         //http://localhost/expenses/user/updatePhoto to /user/updatePhoto
         if (empty($url[0])){
+            //se ingresa sin controlador
             $archivoController='app/controller/main.php';
             require_once $archivoController;
             $controller= new Main();
             $controller->cargarModelo('main');
+            $controller->render();
             return false;
         } 
         $archivoController='app/controller/'.$url[0].'.php';
@@ -27,10 +29,13 @@ class App{
             if (isset($url[1])){
                 //trae la segunda url 
                 try {
+                    //si hay metodo
                     $controller->{$url[1]}();
                 } catch (\Throwable $th) {
                     $controller= new ErrorPropio();        
                 } 
+            } else {
+                $controller->render();
             }
         }else{
             $controller= new ErrorPropio();
