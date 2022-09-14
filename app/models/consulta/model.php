@@ -46,16 +46,18 @@ class ConsultaModel extends Model{
         }
     }
 
-    public function update($item){
+    public function update($item, $tabla){
     
-        $query = $this->db->connect()->prepare("UPDATE personas SET nombre = :nombre, apellido = :apellido WHERE nro_documento = :nro_documento");
+        $query = $this->db->connect()->prepare("UPDATE ".$tabla." SET nombre = :nombre, apellido = :apellido WHERE nro_documento = :nro_documento");
         try {
             $query->execute([
                 'nro_documento' => $item['nro_documento'],
                 'nombre' => $item['nombre'],
                 'apellido' => $item['apellido']
             ]);
+            return true;
         } catch(PDOException $e){
+            return false;
             
         }
     

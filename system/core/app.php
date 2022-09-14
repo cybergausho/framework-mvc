@@ -41,17 +41,6 @@ class App{
             } else {
             $controller->render();
             }
-            /*if (isset($url[1])){
-                //trae la segunda url 
-                try {
-                    //si hay metodo
-                    $controller->{$url[1]}();
-                } catch (\Throwable $th) {
-                    $controller= new ErrorPropio();        
-                } 
-            } else {
-                $controller->render();
-            }*/
         }else{
             $controller= new ErrorPropio();
         }

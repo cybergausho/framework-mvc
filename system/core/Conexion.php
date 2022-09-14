@@ -23,6 +23,7 @@ class Conexion{
         try{
             $conexion= $this->driver.":host=".$this->host.":".$this->port.";dbname=".$this->db.";charset=".$this->charset;
             $this->connect = new PDO($conexion, $this->user, $this->password);
+            $this->connect->exec("set names utf8");
             $this->connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->connect; //objeto pdo
     } catch(PDOException $e){

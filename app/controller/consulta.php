@@ -18,7 +18,7 @@ class Consulta extends Controller{
         $idAlumno= $param[0];
         $alumno = $this->model->getById($idAlumno);
         session_start();
-        $_SESSION['idVerAlumno']= $alumno->documento;
+        $_SESSION['idVerAlumno']= $alumno->nro_documento;
 
         $this->view->alumno= $alumno;
         $this->view->render('consulta/detalle');
@@ -43,8 +43,9 @@ class Consulta extends Controller{
             $alumno->apellido = $apellido;
 
             $this->view->alumno = $alumno;
+            echo "El alumno se ha actualizado.";
         } else {
-            //el alumno no se pudo actualizar
+            echo "ERROR: El alumno no se pudo actualizar.";
         }
         $this->view->render('consulta/detalle');
     }

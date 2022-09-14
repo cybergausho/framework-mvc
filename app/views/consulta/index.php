@@ -20,10 +20,9 @@
             </thead>
             <tbody>
             <?php foreach($this->datos as $row){ 
-                include_once('models/alumno.php');
+                include_once 'app/models/alumno.php';
                 $alumno = new Alumno();
                 $alumno = $row;
-                #while($this->datos){
             ?>
             <tr>
             <td><?php echo $alumno->nombre; ?></td>
