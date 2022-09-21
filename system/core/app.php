@@ -20,6 +20,8 @@ class App{
             $controller->render();
             return false;
         } 
+        require_once 'system/core/Autoload.php';
+        
         $archivoController='app/controller/'.$url[0].'.php';
         //si existe el controlador.php 
         if (file_exists($archivoController)){

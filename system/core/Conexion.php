@@ -31,7 +31,12 @@ class Conexion{
         print_r("ERROR: ".$e->getMessage());
     }
     
-}
+
+    }
+
+    public function prepare($sql){
+        return $this->connect->prepare($sql);
+    }
 
 }
 

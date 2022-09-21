@@ -1,11 +1,12 @@
 <?php 
 class Query {
-    protected $nombre_tabla;
+    protected $tabla_nombre;
     protected $primary_key;
     private $db;
 
     public function __construct()
     {
+        $this->db= new Conexion();
         $this->db->connect();
     }
 
@@ -16,12 +17,12 @@ class Query {
     }
 
     public function buscarUno($id){
-        $sql = "SELECT * FROM $this->nombre_tabla WHERE $this->primary_key = $id";
+        $sql = "SELECT * FROM $this->tabla_nombre WHERE $this->primary_key = $id";
         return $this->query($sql);
     }
 
     public function buscarTodos(){
-        $sql="SELECT * FROM $this->nombre_tabla";
+        $sql="SELECT * FROM $this->tabla_nombre";
         return $this->query($sql);
 
     }

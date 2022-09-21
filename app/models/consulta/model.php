@@ -1,5 +1,5 @@
 <?php
-include_once('app/models/alumno.php');
+include_once('app/models/entidades/Alumno.php');
 class ConsultaModel extends Model{
 
     function __construct(){
