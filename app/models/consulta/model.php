@@ -1,9 +1,31 @@
 <?php
 include_once('app/models/entidades/Alumno.php');
-class ConsultaModel extends Model{
+class ConsultaModel{
 
-    function __construct(){
+    /*function __construct(){
         parent::__construct();
+    }  */
+
+    public function __construct(){
+        $this->tabla_nombre = 'personas';
+        $this->primary_key= 'id';
+        $this->query = new Query();
+        }
+    
+    
+        public function buscarTodos(){
+            $list= array();
+            $data = $this->query->buscarTodos($this->tabla_nombre);
+            foreach ($data as $row) {
+                $list[]= new Alumno($row);
+            }
+            return $list;
+        }
+
+
+/*
+    function getAll(){
+
     }
 
     function get($tabla){
@@ -62,4 +84,5 @@ class ConsultaModel extends Model{
         }
     
     }
+    */
 }

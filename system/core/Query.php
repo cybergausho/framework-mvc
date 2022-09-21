@@ -11,18 +11,25 @@ class Query {
     }
 
     public function query($sql){
+        var_dump($sql);
         $query = $this->db->prepare($sql);
         $query->execute();
         return $query->fetchAll();
     }
+
+    /*public function query($sql){
+        $query = $this->db->prepare($sql);
+        $query->execute();
+        return $query->fetchAll();
+    }*/
 
     public function buscarUno($id){
         $sql = "SELECT * FROM $this->tabla_nombre WHERE $this->primary_key = $id";
         return $this->query($sql);
     }
 
-    public function buscarTodos(){
-        $sql="SELECT * FROM $this->tabla_nombre";
+    public function buscarTodos($tabla_nombre){
+        $sql="SELECT * FROM $tabla_nombre";
         return $this->query($sql);
 
     }

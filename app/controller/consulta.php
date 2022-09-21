@@ -8,7 +8,7 @@ class Consulta extends Controller{
     }
 
     function render(){
-        $alumnos = $this->model->get('personas');
+        $alumnos = $this->model->buscarTodos();
         $this->view->datos = $alumnos;
         $this->view->render('consulta/index');
     }
@@ -21,6 +21,8 @@ class Consulta extends Controller{
         $_SESSION['idVerAlumno']= $alumno->nro_documento;
 
         $this->view->alumno= $alumno;
+        $alumnos= $this->model->buscarTodos();
+        $this->view->alumnos= $alumnos;
         $this->view->render('consulta/detalle');
     }
 
